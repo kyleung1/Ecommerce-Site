@@ -1,0 +1,58 @@
+.navbar {
+  font-size: 20px;
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-family: 'Arial';
+  color: black;
+  padding: 0px 20px;
+}
+
+.navbar a:hover{
+  color: #0088a9;
+}
+
+.nav-line {
+  background-color: red;
+}
+
+.product-details {
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.product-details h4 {
+  color: blue;
+}
+
+.item_images {
+  width: 40px;
+}
+
+.cart-map {
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.cart-details h4 {
+  color: blue;
+}
+
+.slide-container {
+  background-color: gold;
+  padding: 20px 50px 20px 50px; /* top, right, bottom, left */
+}
+
+.slide-container .swiper-slide{
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px 40px 0px; /* top, right, bottom, left */
+}
