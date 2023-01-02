@@ -14,6 +14,18 @@ const Home = () => {
         <div className = "home">
             <h2>New Arrivals</h2>
             <HomeSlide/>
+            <div className="homeboxTitle">
+                <h2>News</h2>
+                <h2>Daily Random Fact</h2>
+            </div>
+            <div className="homeboxes">
+                <div className="homebox1">
+                    box 1
+                </div>
+                <div className="homebox2">
+                    box 2
+                </div>
+            </div>
         </div>
     );
 }

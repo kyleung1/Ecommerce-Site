@@ -1,24 +1,77 @@
+footer {
+  font-size: 25px;
+  text-align: center;
+  background-color:#FFB6C1;
+  color:  #006699;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.pages {
+  min-height: 100vh;
+}
+
 .navbar {
   font-size: 20px;
   display: flex; 
   justify-content: space-between;
   align-items: center;
-  padding: 20px 5%;
+  margin: 20px 5%;
 }
 
 .navbar a {
   text-decoration: none;
   font-family: 'Arial';
   color: black;
-  padding: 0px 20px;
+  margin: 0px 20px;
 }
 
 .navbar a:hover{
   color: #0088a9;
 }
 
-.nav-line {
-  background-color: red;
+.dropdown {
+  position: absolute;
+  overflow: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+.homeboxTitle {
+  display: flex;
+  margin-top: 20px;
+}
+
+.homeboxTitle h2{
+  width: 50%;
+  margin: 10px;
+}
+
+.homeboxes {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.homebox1 {
+  border: 1px black solid;
+  width: 50%;
+  height: 500px;
+  margin: 10px;
+}
+
+.homebox2 {
+  border: 1px black solid;
+  width: 50%;
+  height: 500px;
+  margin: 10px;
 }
 
 .product-details {
@@ -46,7 +99,7 @@
 }
 
 .slide-container {
-  background-color: gold;
+  background-color: #ADD8E6;
   padding: 20px 50px 20px 50px; /* top, right, bottom, left */
 }
 
@@ -56,3 +109,43 @@
   align-items: center;
   padding: 20px 0px 40px 0px; /* top, right, bottom, left */
 }
+
+.t-pose {
+  width: 500px;
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.posePara {
+  width: 800px;
+  font-size: 20px;
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.linkedIcon {
+  width: 200px;
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.gitIcon {
+  width: 200px;
+  border-style: double;
+  border-color: black;
+  border-radius: 4px;
+}
+
+.contactLinks {
+  display: flex;
+  justify-content: center; 
+  
+}
+
+.contactLinks a {
+  margin: 20px;
+}
+
