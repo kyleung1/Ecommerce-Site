@@ -7,48 +7,38 @@ const stripe = Stripe(process.env.STRIPE_PRIVATE_KEY)
 var storeItems = []
 
 const checkout = async (req, res) => {
-    if (storeItems.length == 0) {
-        test2(req)
-    }
-    else {
-        console.log(test3(req))
-    }
-    
-    // try {
-    //     const session = await stripe.checkout.sessions.create({
-            
-    //         payment_method_types: ['card'],
-    //         mode: 'payment',
-    //         line_items: req.body.items?.map(item => {
-    //             const storeItem = storeItems.find(x => x._id === item.id) //Item.findById(item.id, (err, docs) => {
-    //             //     if (err) {
-    //             //         console.log(err);
-    //             //     }
-    //             //     else {
-    //             //         return docs;
-    //             //     }
-    //             // })
-    //             console.log(storeItem)
-    //             return {
-    //                 price_data: {
-    //                     currency: 'usd',
-    //                     product_data: {
-    //                         name: storeItem.name
-    //                     },
-    //                     unit_amount: storeItem.price*100 //tempPrice * 100
-    //                 },
-    //                 quantity: item.quantity
-    //                 }
-    //         }),
-
-    //         success_url: "http://localhost:" + process.env.PORT + "/success",
-    //         cancel_url: "http://localhost:" + process.env.PORT + "/fail"
-    //     })
-        
-    //     res.json({ url: session.url})
-    // } catch (e) {
-    //     res.status(500).json({error: e.message})
+    // if (storeItems.length == 0) {
+    //     test2(req)
     // }
+    // else {
+    //     console.log(test3(req))
+    // }
+    try {
+        const session = await stripe.checkout.sessions.create({
+            
+            payment_method_types: ['card'],
+            mode: 'payment',
+            line_items: await Promise.all(req.body.items?.map(async item => {
+                const storeItem = await Item.findById(item.id);
+                // console.log(storeItem)
+                return {
+                    price_data: {
+                        currency: 'usd',
+                        product_data: {
+                            name: storeItem.name
+                        },
+                        unit_amount: storeItem.price*100 //tempPrice * 100
+                    },
+                    quantity: item.quantity
+                }
+            })),
+            success_url: "http://localhost:" + process.env.PORTCLIENT + "/success",
+            cancel_url: "http://localhost:" + process.env.PORTCLIENT + "/fail"
+        })
+        res.json({ url: session.url})
+    } catch (e) {
+        res.status(500).json({error: e.message})
+    }
     storeItems = []
 }
 
