@@ -11,11 +11,11 @@ export interface action {
   payload?: any;
 }
 
-export interface loginContext {
-  state: String;
-  dispatch: React.Dispatch<action>;
+export interface user {
+  user: login | null;
 }
 
-export interface user {
-  user: String;
+export interface loginContext {
+  state: user;
+  dispatch: React.Dispatch<action>;
 }

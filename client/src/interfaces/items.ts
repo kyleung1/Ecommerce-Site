@@ -9,6 +9,11 @@ export default interface Items {
   desc: String;
 }
 
+export interface action {
+  type: String;
+  payload?: any;
+}
+
 export default interface ItemsContext {
   items: Items[];
   dispatch: React.Dispatch<any>;
