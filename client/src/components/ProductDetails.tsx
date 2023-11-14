@@ -3,12 +3,13 @@ import { useAuthContext } from "../hooks/useAuthContext";
 import { useCartContext } from "../hooks/useCartContext";
 import { useEffect } from "react";
 import React from "react";
+
 var cartArray = JSON.parse(localStorage.getItem("myCart"));
 
 const ProductDetails = ({ item }) => {
-  const { dispatch } = useItemContext();
-  const { user } = useAuthContext();
-  const { cartDispatch } = useCartContext();
+  const { items, itemsDispatch } = useItemContext();
+  const { authState, authDispatch } = useAuthContext();
+  const { cartState, cartDispatch } = useCartContext();
 
   useEffect(() => {
     if (cartArray && cartArray.length > 0) {

@@ -20,7 +20,7 @@ export const AuthContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [state, dispatch] = useReducer<React.Reducer<user, action>>(
+  const [authState, authDispatch] = useReducer<React.Reducer<user, action>>(
     authReducer,
     {
       user: null,
@@ -33,15 +33,15 @@ export const AuthContextProvider = ({
       const user: login = JSON.parse(localStorageUser);
 
       if (user) {
-        dispatch({ type: "LOGIN", payload: user });
+        authDispatch({ type: "LOGIN", payload: user });
       }
     }
   }, []);
 
-  console.log("AuthContext State: ", state);
+  console.log("AuthContext State: ", authState);
 
   return (
-    <AuthContext.Provider value={{ state, dispatch }}>
+    <AuthContext.Provider value={{ authState, authDispatch }}>
       {children}
     </AuthContext.Provider>
   );

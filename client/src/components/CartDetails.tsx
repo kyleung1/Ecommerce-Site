@@ -2,8 +2,9 @@ import { useCartContext } from "../hooks/useCartContext";
 import { useItemContext } from "../hooks/useItemContext";
 import { useEffect, useState } from "react";
 
-var cartArray = JSON.parse(localStorage.getItem("myCart"));
-console.log(cartArray);
+const LScart = localStorage.getItem("myCart");
+let cartArray: JSON;
+if (LScart) cartArray = JSON.parse(LScart);
 
 const CartDetails = ({ a }) => {
   const { cart, cartDispatch } = useCartContext();

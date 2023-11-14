@@ -1,8 +1,9 @@
 import { createContext, useReducer, useEffect } from "react";
+import { cartContext, Cart } from "../interfaces/cart";
 
-export const CartContext = createContext();
+export const CartContext = createContext<cartContext | null>(null);
 
-export const CartReducer = (state, action) => {
+export const CartReducer = (state: Cart, action: any) => {
   switch (action.type) {
     case "SET_CART":
       return {
@@ -22,13 +23,19 @@ export const CartReducer = (state, action) => {
   }
 };
 
-export const CartContextProvider = ({ children }) => {
-  const [state, cartDispatch] = useReducer(CartReducer, {
+export const CartContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  const [cartState, cartDispatch] = useReducer(CartReducer, {
     cart: null,
   });
 
   useEffect(() => {
-    const myCart = JSON.parse(localStorage.getItem("myCart"));
+    const LScart = localStorage.getItem("myCart");
+    let myCart;
+    if (LScart) myCart = JSON.parse(LScart);
 
     if (myCart) {
       cartDispatch({ type: "SET_CART", payload: myCart });
@@ -36,7 +43,7 @@ export const CartContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ ...state, cartDispatch }}>
+    <CartContext.Provider value={{ cartState, cartDispatch }}>
       {children}
     </CartContext.Provider>
   );

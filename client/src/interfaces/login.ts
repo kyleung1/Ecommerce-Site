@@ -13,8 +13,8 @@ export interface user {
 }
 
 export interface loginContext {
-  state: user;
-  dispatch: React.Dispatch<action>;
+  authState: user;
+  authDispatch: React.Dispatch<action>;
 }
 
 interface loginAction {
