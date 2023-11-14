@@ -5,12 +5,12 @@ import { useAuthContext } from "../hooks/useAuthContext";
 //components
 import ProductDetails from "../components/ProductDetails";
 import React from "react";
-import Items from "../interfaces/items";
+import { Item } from "../interfaces/items";
 
 const Products = () => {
   //const [items, setItems] = useState(null)
-  const { items, dispatch } = useItemContext();
-  const { user } = useAuthContext;
+  const { items, itemsDispatch } = useItemContext();
+  // const { user } = useAuthContext;
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -21,20 +21,22 @@ const Products = () => {
 
       if (response.ok) {
         // setItems(json)
-        dispatch({ type: "SET_ITEMS", payload: json });
+        itemsDispatch({ type: "SET_ITEMS", payload: json });
       }
     };
 
     fetchItems();
   }, []);
 
+  console.log(items);
   return (
     <div className="products">
       <h2>Products page</h2>
       <div className="product_items">
-        {/* {items && items.map((item) => (
-                    <ProductDetails key = {item._id} item = {item}/>
-                ))} */}
+        {items.items &&
+          items.items.map((item: Item) => (
+            <ProductDetails key={item._id as React.Key} item={item} />
+          ))}
       </div>
     </div>
   );

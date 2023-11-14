@@ -1,6 +1,6 @@
 import React from "react";
 
-export default interface Items {
+export interface Item {
   _id: String;
   name: String;
   price: number;
@@ -9,12 +9,28 @@ export default interface Items {
   desc: String;
 }
 
-export interface action {
-  type: String;
-  payload?: any;
+export type action = SetItemsAction | CreateItemAction | DeleteItemAction;
+
+export interface ItemsContext {
+  items: Items;
+  itemsDispatch: React.Dispatch<action>;
 }
 
-export default interface ItemsContext {
-  items: Items[];
-  dispatch: React.Dispatch<any>;
+export interface Items {
+  items: Item[];
+}
+
+export interface SetItemsAction {
+  type: "SET_ITEMS";
+  payload: Item[];
+}
+
+export interface CreateItemAction {
+  type: "CREATE_ITEM";
+  payload: Item;
+}
+
+export interface DeleteItemAction {
+  type: "DELETE_ITEM";
+  payload: { _id?: string };
 }

@@ -6,10 +6,7 @@ export interface login {
   admin: boolean;
 }
 
-export interface action {
-  type: String;
-  payload?: any;
-}
+export type action = loginAction | logoutAction;
 
 export interface user {
   user: login | null;
@@ -18,4 +15,14 @@ export interface user {
 export interface loginContext {
   state: user;
   dispatch: React.Dispatch<action>;
+}
+
+interface loginAction {
+  type: String;
+  payload: login;
+}
+
+interface logoutAction {
+  type: String;
+  payload: null;
 }

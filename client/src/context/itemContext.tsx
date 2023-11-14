@@ -1,11 +1,10 @@
 import { createContext, useReducer } from "react";
 import React from "react";
-
-import ItemsContext from "../interfaces/items";
+import { ItemsContext, Item, action, Items } from "../interfaces/items";
 
 export const ItemContext = createContext<ItemsContext | null>(null);
 
-export const itemsReducer = (state, action) => {
+export const itemsReducer = (state: Items, action: action) => {
   switch (action.type) {
     case "SET_ITEMS":
       return {
@@ -16,9 +15,10 @@ export const itemsReducer = (state, action) => {
         items: [action.payload, ...state.items],
       };
     case "DELETE_ITEM":
-      return {
-        items: state.items.filter((i) => i._id !== action.payload._id),
-      };
+      if (action.payload._id)
+        return {
+          items: state.items.filter((i: Item) => i._id !== action.payload._id),
+        };
     default:
       return state;
   }
@@ -29,12 +29,12 @@ export const ItemContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [items, dispatch] = useReducer(itemsReducer, {
-    items: null,
+  const [items, itemsDispatch] = useReducer(itemsReducer, {
+    items: [],
   });
 
   return (
-    <ItemContext.Provider value={{ ...items, dispatch }}>
+    <ItemContext.Provider value={{ items, itemsDispatch }}>
       {children}
     </ItemContext.Provider>
   );
