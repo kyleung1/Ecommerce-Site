@@ -1,8 +1,8 @@
 footer {
   font-size: 25px;
   text-align: center;
-  background-color:#FFB6C1;
-  color:  #006699;
+  background-color: #ffb6c1;
+  color: #006699;
   padding: 20px;
   margin-top: 20px;
 }
@@ -18,7 +18,7 @@ footer {
 
 .navbar {
   font-size: 20px;
-  display: flex; 
+  display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 20px 5%;
@@ -26,12 +26,12 @@ footer {
 
 .navbar a {
   text-decoration: none;
-  font-family: 'Arial';
+  font-family: "Arial";
   color: black;
   margin: 0px 20px;
 }
 
-.navbar a:hover{
+.navbar a:hover {
   color: #0088a9;
 }
 
@@ -49,7 +49,7 @@ ul {
   margin-top: 20px;
 }
 
-.homeboxTitle h2{
+.homeboxTitle h2 {
   width: 50%;
   margin: 10px;
 }
@@ -99,12 +99,12 @@ ul {
 }
 
 .slide-container {
-  background-color: #ADD8E6;
+  background-color: #add8e6;
   padding: 20px 50px 20px 50px; /* top, right, bottom, left */
 }
 
-.slide-container .swiper-slide{
-  display: flex; 
+.slide-container .swiper-slide {
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 0px 40px 0px; /* top, right, bottom, left */
@@ -141,11 +141,14 @@ ul {
 
 .contactLinks {
   display: flex;
-  justify-content: center; 
-  
+  justify-content: center;
 }
 
 .contactLinks a {
   margin: 20px;
 }
 
+#account-box {
+  height: 50px;
+  width: 50px;
+}

@@ -24,3 +24,8 @@ export interface DeleteItemAction {
   type: "REMOVE_CART";
   payload: { name?: string };
 }
+
+export interface Amount {
+  name: String;
+  quantity: number;
+}

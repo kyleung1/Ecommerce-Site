@@ -12,7 +12,7 @@ export interface Item {
 export type action = SetItemsAction | CreateItemAction | DeleteItemAction;
 
 export interface ItemsContext {
-  items: Items;
+  itemsState: Items;
   itemsDispatch: React.Dispatch<action>;
 }
 

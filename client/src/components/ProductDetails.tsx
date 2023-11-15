@@ -2,19 +2,23 @@ import { useItemContext } from "../hooks/useItemContext";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCartContext } from "../hooks/useCartContext";
 import { useEffect } from "react";
+import { Item, Items } from "../interfaces/items";
 import React from "react";
 
-var cartArray = JSON.parse(localStorage.getItem("myCart"));
+const LScart = localStorage.getItem("myCart");
+let cartArray: Item[];
+if (LScart) cartArray = JSON.parse(LScart);
 
-const ProductDetails = ({ item }) => {
-  const { items, itemsDispatch } = useItemContext();
+const ProductDetails = ({ item }: { item: Item }) => {
+  const { itemsState, itemsDispatch } = useItemContext();
   const { authState, authDispatch } = useAuthContext();
   const { cartState, cartDispatch } = useCartContext();
 
   useEffect(() => {
     if (cartArray && cartArray.length > 0) {
       localStorage.setItem("myCart", JSON.stringify(cartArray));
-      cartArray = JSON.parse(localStorage.getItem("myCart"));
+      const LScartNew = localStorage.getItem("myCart");
+      if (LScartNew) cartArray = JSON.parse(LScartNew);
       cartDispatch({ type: "SET_CART", payload: cartArray });
       console.log(cartArray);
     }
@@ -22,7 +26,7 @@ const ProductDetails = ({ item }) => {
 
   //delete an item from products
   const handleDelete = async () => {
-    if (!user) {
+    if (!authState.user) {
       return;
     }
 
@@ -31,7 +35,7 @@ const ProductDetails = ({ item }) => {
       {
         method: "DELETE",
         headers: {
-          Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${authState.user.token}`,
         },
       }
     );
@@ -39,7 +43,7 @@ const ProductDetails = ({ item }) => {
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: "DELETE_ITEM", payload: json });
+      itemsDispatch({ type: "DELETE_ITEM", payload: json });
     }
   };
 
@@ -67,7 +71,7 @@ const ProductDetails = ({ item }) => {
       />
       <br></br>
       <p className="product-desription">{item.desc}</p>
-      {user && user.admin === true && (
+      {authState.user && authState.user.admin === true && (
         <button onClick={handleDelete}>delete</button>
       )}
       <button onClick={handleAddCart}>Add to Cart</button>

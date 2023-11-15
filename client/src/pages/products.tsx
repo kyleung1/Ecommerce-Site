@@ -9,7 +9,7 @@ import { Item } from "../interfaces/items";
 
 const Products = () => {
   //const [items, setItems] = useState(null)
-  const { items, itemsDispatch } = useItemContext();
+  const { itemsState, itemsDispatch } = useItemContext();
   // const { user } = useAuthContext;
 
   useEffect(() => {
@@ -28,13 +28,13 @@ const Products = () => {
     fetchItems();
   }, []);
 
-  console.log(items);
+  console.log(itemsState);
   return (
     <div className="products">
       <h2>Products page</h2>
       <div className="product_items">
-        {items.items &&
-          items.items.map((item: Item) => (
+        {itemsState.items &&
+          itemsState.items.map((item: Item) => (
             <ProductDetails key={item._id as React.Key} item={item} />
           ))}
       </div>

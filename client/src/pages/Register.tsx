@@ -8,7 +8,7 @@ const Register = () => {
   const { register, error, isLoading } = useRegister();
   let admin = false;
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await register(email, password, admin);

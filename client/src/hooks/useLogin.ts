@@ -3,10 +3,10 @@ import { useAuthContext } from "./useAuthContext";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState<Boolean | null>(null);
-  const { dispatch } = useAuthContext();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { authDispatch } = useAuthContext();
 
-  const login = async (email: String, password: String) => {
+  const login = async (email: string, password: string) => {
     const response = await fetch(
       "http://localhost:" + process.env.REACT_APP_PORT + "/user/login",
       {
@@ -32,7 +32,7 @@ export const useLogin = () => {
       localStorage.setItem("user", JSON.stringify(json));
 
       //update the auth context
-      dispatch({ type: "LOGIN", payload: json });
+      authDispatch({ type: "LOGIN", payload: json });
 
       setIsLoading(false);
       console.log("Logged in");

@@ -5,7 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-import HomeSlide from "../components/HomeSlide.js";
+import HomeSlide from "../components/HomeSlide";
 
 const Home = () => {
   const title = "Poke Mart";
@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="home">
       <h2>New Arrivals</h2>
-      {/* <HomeSlide/> */}
+      <HomeSlide />
       <div className="homeboxTitle">
         <h2>News</h2>
         <h2>Daily Random Fact</h2>

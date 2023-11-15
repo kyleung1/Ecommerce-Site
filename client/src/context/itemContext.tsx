@@ -29,12 +29,12 @@ export const ItemContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [items, itemsDispatch] = useReducer(itemsReducer, {
+  const [itemsState, itemsDispatch] = useReducer(itemsReducer, {
     items: [],
   });
 
   return (
-    <ItemContext.Provider value={{ items, itemsDispatch }}>
+    <ItemContext.Provider value={{ itemsState, itemsDispatch }}>
       {children}
     </ItemContext.Provider>
   );

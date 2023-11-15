@@ -1,18 +1,23 @@
-import React, {useState} from 'react';
+import React, { useState, ReactNode } from "react";
+import NavbarProps from "../interfaces/navbar";
 
-const NavItem = (props) => {
-
-    const {open, setOpen} = useState(true);
-
-    return (
-        <li className = "nav-item">
-            <a href = "#" className = "icon-button" onClick={() => setOpen(!open)}>
-                {props.icon}
-            </a>
-
-            {open && props.children}
-        </li>
-    )
+interface NavItemProps {
+  icon: ReactNode;
+  children?: ReactNode;
 }
+
+const NavItem = (props: NavItemProps) => {
+  const [open, setOpen] = useState(true);
+
+  return (
+    <li className="nav-item">
+      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+        {props.icon}
+      </a>
+
+      {open && props.children}
+    </li>
+  );
+};
 
 export default NavItem;

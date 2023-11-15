@@ -12,20 +12,15 @@ import NavItem from "./components/NavItem";
 import Footer from "./components/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Admin from "./pages/admin";
-
-// import { ReactComponent as Trainer } from "./images/Trainer.svg";
 import React from "react";
+// import Trainer from "./images/Trainer.svg";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <div className="main">
-          <Navbar>
-            {/* <NavItem icon={<Trainer />}>
-              <p>hello world</p>
-            </NavItem> */}
-          </Navbar>
+          <Navbar>{/* <NavItem icon={<Trainer />}></NavItem> */}</Navbar>
           <div className="pages">
             <Routes>
               <Route path="/" element={<Home />}></Route>
