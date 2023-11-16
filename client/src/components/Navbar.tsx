@@ -2,10 +2,34 @@ import { useLogout } from "../hooks/useLogout";
 import { useAuthContext } from "../hooks/useAuthContext";
 import DropdownMenu from "./DropdownMenu";
 import NavbarProps from "../interfaces/navbar";
+import { useCartContext } from "../hooks/useCartContext";
 
 const Navbar = (props: NavbarProps) => {
   const { logout } = useLogout();
   const { authState } = useAuthContext();
+  const { cartState } = useCartContext();
+
+  const links = document.querySelectorAll(".navbar .after-arrow");
+  const arrows = document.querySelectorAll(".navbar .hover-arrow");
+
+  arrows.forEach((arrow) => {
+    const link = arrow.nextElementSibling;
+    if (link) {
+      link.addEventListener("mouseover", () => {
+        if (link && link.classList.contains("after-arrow")) {
+          arrow.classList.remove("hidden");
+        }
+      });
+
+      link.addEventListener("mouseout", () => {
+        if (link && link.classList.contains("after-arrow")) {
+          arrow.classList.add("hidden");
+        }
+      });
+    }
+  });
+
+  // let cartItemAmt = cartState.
 
   const handleClick = () => {
     logout();
@@ -22,23 +46,56 @@ const Navbar = (props: NavbarProps) => {
           </a>
         </ul>
         <ul className="navbar-nav">
-          <a href="/products">Products</a>
+          <img
+            src="/images/right-arrow.png"
+            alt="arrow"
+            className="hover-arrow hidden"
+          />
+          <a className="after-arrow" href="/products">
+            Products
+          </a>
         </ul>
         <ul className="navbar-nav">
-          <a href="/contact">Contact</a>
+          <img
+            src="/images/right-arrow.png"
+            alt="arrow"
+            className="hover-arrow hidden"
+          />
+          <a className="after-arrow" href="/contact">
+            Contact
+          </a>
         </ul>
         <ul className="navbar-nav">
-          <a href="/about">About</a>
+          <img
+            src="/images/right-arrow.png"
+            alt="arrow"
+            className="hover-arrow hidden"
+          />
+          <a className="after-arrow" href="/about">
+            About
+          </a>
         </ul>
         {!authState.user && (
           <ul className="navbar-nav">
-            <a href="/login">Login</a>
+            <img
+              src="/images/right-arrow.png"
+              alt="arrow"
+              className="hover-arrow hidden"
+            />
+            <a className="after-arrow" href="/login">
+              Login
+            </a>
           </ul>
         )}
         <ul className="navbar-nav">
-          <a href="/cart">
-            {" "}
-            <img src="/images/263142.png" width="20" />{" "}
+          <img
+            src="/images/right-arrow.png"
+            alt="arrow"
+            className="hover-arrow hidden"
+          />
+          <a className="after-arrow" href="/cart">
+            <img src="/images/263142.png" width="30px" />{" "}
+            <span className="cart-items">{cartState?.cart?.length}</span>
           </a>
         </ul>
         <ul className="navbar-nav"> {props.children} </ul>

@@ -152,3 +152,21 @@ ul {
   height: 50px;
   width: 50px;
 }
+
+.cart-items {
+  position: relative;
+  bottom: 30px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 20px;
+}
+
+.hover-arrow {
+  width: 10%;
+}
+
+.hidden {
+  visibility: hidden;
+}
