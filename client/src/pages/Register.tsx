@@ -12,6 +12,8 @@ const Register = () => {
     e.preventDefault();
 
     await register(email, password, admin);
+    setEmail("");
+    setPass("");
   };
 
   return (
@@ -32,7 +34,7 @@ const Register = () => {
         value={password}
       />
 
-      {/* <button disabled={isLoading}>Register</button> */}
+      <button disabled={isLoading}>Register</button>
       {error && <div className="register-error">{error}</div>}
 
       <p className="pass-rule">

@@ -93,6 +93,11 @@ const Cart = () => {
   return (
     <div>
       <h2>Cart page</h2>
+      <p>
+        The checkout is in test mode, please see{" "}
+        <a href="https://stripe.com/docs/testing#cards">Stripe Testing Cards</a>{" "}
+        to simulate a checkout.
+      </p>
       <button onClick={handleCheckout}>Checkout</button>
       <button onClick={handleClear}>Clear Cart</button>
       <div className="cart-map">

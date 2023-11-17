@@ -7,9 +7,14 @@ footer {
   margin-top: 20px;
 }
 
+a {
+  text-decoration: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;
+  font-family: "Pixelify Sans", sans-serif;
 }
 
 .pages {
@@ -25,8 +30,6 @@ footer {
 }
 
 .navbar a {
-  text-decoration: none;
-  font-family: "Arial";
   color: black;
   margin: 0px 20px;
 }

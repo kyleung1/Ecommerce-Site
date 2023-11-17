@@ -15,8 +15,8 @@ const Home = () => {
       <h2>New Arrivals</h2>
       <HomeSlide />
       <div className="homeboxTitle">
-        <h2>News</h2>
-        <h2>Daily Random Fact</h2>
+        <h2>Trainer Essentials!</h2>
+        <h2>Gifts for your Professor!</h2>
       </div>
       <div className="homeboxes">
         <div className="homebox1">box 1</div>
