@@ -1,8 +1,8 @@
 import React from "react";
 
 export interface login {
-  email: String;
-  token: String;
+  email: string;
+  token: string;
   admin: boolean;
 }
 
@@ -18,11 +18,11 @@ export interface loginContext {
 }
 
 interface loginAction {
-  type: String;
+  type: string;
   payload: login;
 }
 
 interface logoutAction {
-  type: String;
+  type: string;
   payload: null;
 }

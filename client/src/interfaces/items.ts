@@ -1,12 +1,12 @@
 import React from "react";
 
 export interface Item {
-  _id: String;
-  name: String;
+  _id: string;
+  name: string;
   price: number;
   stock: number;
   __v: number;
-  desc: String;
+  desc: string;
 }
 
 export type action = SetItemsAction | CreateItemAction | DeleteItemAction;

@@ -21,33 +21,33 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    fetch(
-      "http://localhost:" +
-        process.env.REACT_APP_PORT +
-        "/create-checkout-session",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          items: [
-            { id: "631050fc59211e6e12ca98be", quantity: 1 },
-            { id: "631050c159211e6e12ca98b3", quantity: 2 },
-          ],
-        }),
-      }
-    )
-      .then((res) => {
-        if (res.ok) return res.json();
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location = url;
-      })
-      .catch((e) => {
-        console.error(e.error);
-      });
+    if (amount) {
+      const filteredAmount = amount.filter((item) => item.quantity > 0);
+      fetch(
+        "http://localhost:" +
+          process.env.REACT_APP_PORT +
+          "/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            items: filteredAmount,
+          }),
+        }
+      )
+        .then((res) => {
+          if (res.ok) return res.json();
+          return res.json().then((json) => Promise.reject(json));
+        })
+        .then(({ url }) => {
+          window.location = url;
+        })
+        .catch((e) => {
+          console.error(e.error);
+        });
+    }
   };
 
   //gets items from db
@@ -74,10 +74,8 @@ const Cart = () => {
 
   //keeping track of quantities of items
   var sortedCart = cartState.cart?.sort();
-
+  var amount: Amount[] = [];
   if (sortedCart?.length > 0) {
-    var amount = [];
-
     for (let i = 0; i < itemsState.items?.length; i++) {
       let counter = 0;
       for (let j = 0; j < sortedCart?.length; j++) {
@@ -85,10 +83,16 @@ const Cart = () => {
           counter++;
         }
       }
-      let amountObj = { name: itemsState.items[i]?.name, quantity: counter };
+      let amountObj = {
+        id: itemsState.items[i]?._id,
+        name: itemsState.items[i]?.name,
+        quantity: counter,
+      };
       amount.push(amountObj);
     }
   }
+
+  console.log(sortedCart);
 
   return (
     <div>

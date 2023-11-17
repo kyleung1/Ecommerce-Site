@@ -26,6 +26,7 @@ export interface DeleteItemAction {
 }
 
 export interface Amount {
-  name: String;
+  id: string;
+  name: string;
   quantity: number;
 }
