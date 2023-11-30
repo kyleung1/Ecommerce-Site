@@ -43,12 +43,12 @@ mongoose
     console.log(error);
   });
 
-app.use((req, res, next) => {
-  req.on("data", (chunk) => {
-    console.log(JSON.parse(chunk));
-  });
-  next();
-});
+// app.use((req, res, next) => {
+//   req.on("data", (chunk) => {
+//     console.log(JSON.parse(chunk));
+//   });
+//   next();
+// });
 
 //references
 
