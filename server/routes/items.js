@@ -1,21 +1,21 @@
-const express = require('express')
+const express = require("express");
 const {
-    createItem,
-    deleteItem,
-    updateItem,
-} = require("../controllers/itemsController")
-const requireAuth = require('../middleware/requireAuth')
+  createItem,
+  deleteItem,
+  updateItem,
+} = require("../controllers/itemsController");
+const requireAuth = require("../middleware/requireAuth");
 
-const router = express.Router()
+const router = express.Router();
 
 //require auth for all item routes
-router.use(requireAuth)
+router.use(requireAuth);
 
-//post a new user
-router.post('/', createItem)
-//delete a user
-router.delete('/:id', deleteItem)
-//update a user
-router.patch('/:id', updateItem)
+//post a new item
+router.post("/", createItem);
+//delete an item
+router.delete("/:id", deleteItem);
+//update an item
+router.patch("/:id", updateItem);
 
-module.exports = router
+module.exports = router;

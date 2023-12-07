@@ -15,8 +15,9 @@ const Products = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        "http://localhost:" + process.env.REACT_APP_PORT + "/item2"
+        "https://pkmart-backend.vercel.app/api/item"
       );
+      console.log(process.env.REACT_APP_PKMART_BACKEND);
       const json = await response.json();
 
       if (response.ok) {

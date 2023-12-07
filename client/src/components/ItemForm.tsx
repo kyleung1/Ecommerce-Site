@@ -23,7 +23,7 @@ const ItemForm = () => {
     const item = { name, price, stock, desc };
 
     const response = await fetch(
-      "http://localhost:" + process.env.REACT_APP_PORT + "/item",
+      process.env.PKMART_BACKEND + "/item", // process.env.PKMART_BACKEND
       {
         method: "POST",
         body: JSON.stringify(item),
