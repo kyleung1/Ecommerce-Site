@@ -31,7 +31,7 @@ const ProductDetails = ({ item }: { item: Item }) => {
     }
 
     const response = await fetch(
-      "http://localhost:" + process.env.REACT_APP_PORT + "/item/" + item._id,
+      process.env.REACT_APP_PKMART_BACKEND + "api/item/dynamic/" + item._id,
       {
         method: "DELETE",
         headers: {

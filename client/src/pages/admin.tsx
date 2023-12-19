@@ -13,7 +13,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        "http://localhost:" + process.env.REACT_APP_PORT + "/item2"
+        process.env.REACT_APP_PKMART_BACKEND + "api/item"
       );
       const json = await response.json();
 

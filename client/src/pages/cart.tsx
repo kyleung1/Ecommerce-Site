@@ -23,20 +23,16 @@ const Cart = () => {
   const handleCheckout = async () => {
     if (amount) {
       const filteredAmount = amount.filter((item) => item.quantity > 0);
-      fetch(
-        "http://localhost:" +
-          process.env.REACT_APP_PORT +
-          "/create-checkout-session",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            items: filteredAmount,
-          }),
-        }
-      )
+      fetch(process.env.REACT_APP_PKMART_BACKEND + "api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          apiKey: "" + process.env.APIKEY,
+        },
+        body: JSON.stringify({
+          items: filteredAmount,
+        }),
+      })
         .then((res) => {
           if (res.ok) return res.json();
           return res.json().then((json) => Promise.reject(json));
@@ -54,7 +50,7 @@ const Cart = () => {
   useEffect(() => {
     const fetchItems = async () => {
       const response = await fetch(
-        "http://localhost:" + process.env.REACT_APP_PORT + "/item2"
+        process.env.REACT_APP_PKMART_BACKEND + "api/item"
       );
       const json = await response.json();
 
@@ -91,9 +87,6 @@ const Cart = () => {
       amount.push(amountObj);
     }
   }
-
-  console.log(sortedCart);
-
   return (
     <div>
       <h2>Cart page</h2>

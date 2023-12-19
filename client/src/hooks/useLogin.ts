@@ -8,13 +8,10 @@ export const useLogin = () => {
 
   const login = async (email: string, password: string) => {
     const response = await fetch(
-      "http://localhost:" + process.env.REACT_APP_PORT + "/user/login",
+      process.env.REACT_APP_PKMART_BACKEND + "api/user/login",
       {
         method: "POST",
         body: JSON.stringify({ email, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
       }
     );
     const json = await response.json();
