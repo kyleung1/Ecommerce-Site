@@ -5,9 +5,7 @@ export const useRegister = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { authDispatch } = useAuthContext();
-
   const register = async (email: String, password: String, admin: boolean) => {
-    console.log(process.env.APIKEY);
     const response = await fetch(
       process.env.REACT_APP_PKMART_BACKEND + "api/user/register",
       {
@@ -15,7 +13,7 @@ export const useRegister = () => {
         body: JSON.stringify({ email, password, admin }),
         headers: {
           "Content-Type": "application/json",
-          apikey: "" + process.env.APIKEY,
+          apikey: "" + process.env.REACT_APP_APIKEY,
         },
       }
     );

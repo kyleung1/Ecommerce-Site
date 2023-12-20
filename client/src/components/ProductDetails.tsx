@@ -36,6 +36,7 @@ const ProductDetails = ({ item }: { item: Item }) => {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${authState.user.token}`,
+          apiKey: "" + process.env.REACT_APP_APIKEY,
         },
       }
     );
@@ -43,7 +44,8 @@ const ProductDetails = ({ item }: { item: Item }) => {
     const json = await response.json();
 
     if (response.ok) {
-      itemsDispatch({ type: "DELETE_ITEM", payload: json });
+      itemsDispatch({ type: "DELETE_ITEM", payload: item });
+      console.log("item deleted");
     }
   };
 

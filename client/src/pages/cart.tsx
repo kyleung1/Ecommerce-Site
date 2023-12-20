@@ -19,7 +19,6 @@ const Cart = () => {
     if (LScart) cartArray = JSON.parse(LScart);
     cartDispatch({ type: "SET_CART", payload: cartArray });
   };
-
   const handleCheckout = async () => {
     if (amount) {
       const filteredAmount = amount.filter((item) => item.quantity > 0);
@@ -27,7 +26,7 @@ const Cart = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          apiKey: "" + process.env.APIKEY,
+          apiKey: "" + process.env.REACT_APP_APIKEY,
         },
         body: JSON.stringify({
           items: filteredAmount,

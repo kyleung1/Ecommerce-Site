@@ -23,13 +23,14 @@ const ItemForm = () => {
     const item = { name, price, stock, desc };
 
     const response = await fetch(
-      process.env.PKMART_BACKEND + "api/item", // process.env.PKMART_BACKEND
+      process.env.REACT_APP_PKMART_BACKEND + "api/item", // process.env.PKMART_BACKEND
       {
         method: "POST",
         body: JSON.stringify(item),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${authState.user.token}`,
+          apiKey: "" + process.env.REACT_APP_APIKEY,
         },
       }
     );
