@@ -35,7 +35,11 @@ export const CartContextProvider = ({
   useEffect(() => {
     const LScart = localStorage.getItem("myCart");
     let myCart;
-    if (LScart) myCart = JSON.parse(LScart);
+    if (LScart) {
+      myCart = JSON.parse(LScart);
+    } else {
+      localStorage.setItem("myCart", JSON.stringify({ cart: [] }));
+    }
 
     if (myCart) {
       cartDispatch({ type: "SET_CART", payload: myCart });
