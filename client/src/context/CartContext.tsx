@@ -37,8 +37,6 @@ export const CartContextProvider = ({
     let myCart;
     if (LScart) {
       myCart = JSON.parse(LScart);
-    } else {
-      localStorage.setItem("myCart", JSON.stringify({ cart: [] }));
     }
 
     if (myCart) {
