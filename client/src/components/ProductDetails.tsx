@@ -14,15 +14,18 @@ const ProductDetails = ({ item }: { item: Item }) => {
   const { authState, authDispatch } = useAuthContext();
   const { cartState, cartDispatch } = useCartContext();
 
-  useEffect(() => {
-    if (cartArray && cartArray.length > 0) {
-      localStorage.setItem("myCart", JSON.stringify(cartArray));
-      const LScartNew = localStorage.getItem("myCart");
-      if (LScartNew) cartArray = JSON.parse(LScartNew);
-      cartDispatch({ type: "SET_CART", payload: cartArray });
-      console.log(cartArray);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (cartArray && cartArray.length > 0) {
+  //     localStorage.setItem("myCart", JSON.stringify(cartArray));
+  //     const LScartNew = localStorage.getItem("myCart");
+  //     if (LScartNew) cartArray = JSON.parse(LScartNew);
+  //     cartDispatch({ type: "SET_CART", payload: cartArray });
+  //     console.log(cartArray);
+  //   }
+  // }, []);
+
+  // localStorage.setItem("myCart", JSON.stringify(cartArray));
+  // cartDispatch({ type: "SET_CART", payload: cartArray });
 
   //delete an item from products
   const handleDelete = async () => {

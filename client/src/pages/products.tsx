@@ -28,7 +28,6 @@ const Products = () => {
     fetchItems();
   }, []);
 
-  console.log(itemsState);
   return (
     <div className="products">
       <h2>Products page</h2>
