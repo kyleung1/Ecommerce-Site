@@ -29,7 +29,7 @@ export const CartContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [cartState, cartDispatch] = useReducer(CartReducer, {
-    cart: null,
+    cart: [],
   });
 
   useEffect(() => {
