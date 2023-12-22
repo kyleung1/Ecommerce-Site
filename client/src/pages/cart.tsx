@@ -68,7 +68,7 @@ const Cart = () => {
   }
 
   //keeping track of quantities of items
-  var sortedCart = cartState.cart?.sort();
+  var sortedCart = cartState.cart;
   var amount: Amount[] = [];
   if (sortedCart?.length > 0) {
     for (let i = 0; i < itemsState.items?.length; i++) {
