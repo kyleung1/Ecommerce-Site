@@ -6,7 +6,7 @@ import { Item, Items } from "../interfaces/items";
 import React from "react";
 
 const LScart = localStorage.getItem("myCart");
-let cartArray: Item[];
+let cartArray: Item[] = [];
 if (LScart) cartArray = JSON.parse(LScart);
 
 const ProductDetails = ({ item }: { item: Item }) => {
