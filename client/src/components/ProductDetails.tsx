@@ -41,7 +41,7 @@ const ProductDetails = ({ item }: { item: Item }) => {
 
   //add item to cart
   const handleAddCart = async () => {
-    if (cartArray) {
+    if (cartArray && Array.isArray(cartArray)) {
       cartArray.push(item);
       localStorage.setItem("myCart", JSON.stringify(cartArray));
 
