@@ -9,6 +9,7 @@ const LScart = localStorage.getItem("myCart");
 let cartArray: Item[] = [];
 if (LScart) cartArray = JSON.parse(LScart);
 
+// product details within the products page
 const ProductDetails = ({ item }: { item: Item }) => {
   const { itemsState, itemsDispatch } = useItemContext();
   const { authState, authDispatch } = useAuthContext();

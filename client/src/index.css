@@ -68,6 +68,9 @@ ul {
   width: 50%;
   height: 500px;
   margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .homebox2 {
@@ -75,6 +78,40 @@ ul {
   width: 50%;
   height: 500px;
   margin: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  box-sizing: border-box;
+}
+
+.itemHover:hover {
+  transform: scaleX(-1);
+  cursor: pointer;
+}
+
+.gridItem {
+  width: 100%; /* Ensure images fit within their containers */
+  height: 100%; /* Ensure images fit within their containers */
+  border-right: 1px solid lightgray; /* Border on the right */
+  border-bottom: 1px solid lightgray; /* Border on the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gridItem img {
+  width: 100px;
+  height: 100px;
+}
+
+.gridItem:nth-child(2),
+.gridItem:nth-child(4) {
+  border-right: none; /* Remove right border for the last column */
+}
+
+.gridItem:nth-child(3),
+.gridItem:nth-child(4) {
+  border-bottom: none; /* Remove bottom border for the last row */
 }
 
 .product-details {

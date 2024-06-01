@@ -19,8 +19,52 @@ const Home = () => {
         <h2>Gifts for your Professor!</h2>
       </div>
       <div className="homeboxes">
-        <div className="homebox1">box 1</div>
-        <div className="homebox2">box 2</div>
+        <div className="homebox1">
+          <a href="/products/Super-Potion">
+            <img
+              src={require("../images/Super Potion.webp")}
+              className="itemHover"
+            ></img>
+          </a>
+          <a href="/products/Potion">
+            <img
+              src={require("../images/Potion.webp")}
+              className="itemHover"
+            ></img>
+          </a>
+        </div>
+        <div className="homebox2">
+          <div className="gridItem">
+            <a href="/products/Poke-Ball">
+              <img
+                src={require("../images/Poke Ball.webp")}
+                className="itemHover"
+              ></img>
+            </a>
+          </div>
+          <div className="gridItem">
+            <a href="/products/Great-Ball">
+              <img
+                src={require("../images/Great Ball.webp")}
+                className="itemHover"
+              ></img>
+            </a>
+          </div>
+          <div className="gridItem">
+            <a href="/products/Ultra-Ball">
+              <img
+                src={require("../images/Ultra Ball.webp")}
+                className="itemHover"
+              ></img>
+            </a>
+          </div>
+          <div className="gridItem">
+            <img
+              src={require("../images/t-pose.png")}
+              className="itemHover"
+            ></img>
+          </div>
+        </div>
       </div>
     </div>
   );
