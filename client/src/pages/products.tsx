@@ -13,19 +13,21 @@ const Products = () => {
   // const { user } = useAuthContext;
 
   useEffect(() => {
-    const fetchItems = async () => {
-      const response = await fetch(
-        process.env.REACT_APP_PKMART_BACKEND + "api/item"
-      );
-      const json = await response.json();
+    if (itemsState.items.length == 0) {
+      const fetchItems = async () => {
+        const response = await fetch(
+          process.env.REACT_APP_PKMART_BACKEND + "api/item"
+        );
+        const json = await response.json();
 
-      if (response.ok) {
-        // setItems(json)
-        itemsDispatch({ type: "SET_ITEMS", payload: json });
-      }
-    };
+        if (response.ok) {
+          // setItems(json)
+          itemsDispatch({ type: "SET_ITEMS", payload: json });
+        }
+      };
 
-    fetchItems();
+      fetchItems();
+    }
   }, []);
 
   return (

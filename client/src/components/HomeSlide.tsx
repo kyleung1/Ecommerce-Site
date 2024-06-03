@@ -19,13 +19,19 @@ const HomeSlide = () => {
         centeredSlides={true}
       >
         <SwiperSlide className="swiper-slide">
-          <img src={require("../images/Poke Ball.webp")}></img>
+          <a href="/products/Poke Ball">
+            <img src={require("../images/Poke Ball.webp")}></img>
+          </a>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <img src={require("../images/Great Ball.webp")}></img>
+          <a href="/products/Great Ball">
+            <img src={require("../images/Great Ball.webp")}></img>
+          </a>
         </SwiperSlide>
         <SwiperSlide className="swiper-slide">
-          <img src={require("../images/Ultra Ball.webp")}></img>
+          <a href="/products/Ultra Ball">
+            <img src={require("../images/Ultra Ball.webp")}></img>
+          </a>
         </SwiperSlide>
       </Swiper>
     </div>

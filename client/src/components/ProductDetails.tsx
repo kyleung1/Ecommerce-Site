@@ -53,7 +53,10 @@ const ProductDetails = ({ item }: { item: Item }) => {
 
   return (
     <div className="product-details">
-      <h4>{item.name}</h4>
+      <h4>
+        <a href={`/products/${item.name}`}>{item.name}</a>
+      </h4>
+
       <p>
         <strong>Price: $</strong>
         {item.price.toFixed(2)}
